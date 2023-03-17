@@ -5,8 +5,8 @@ metadata:
 policyDefaults:
   namespace: policy-generator-security-fix-checks
   remediationAction: inform
-  severity: medium
+#  severity: medium
 policies:
   - name: policy-generator-security-fix-checks-manifests
     manifests:
-      - path: security-fix-checks-manifests
+      - path: ./security-fix-checks-manifests
