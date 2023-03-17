@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: policy-generator-security-fix-checks
+---
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: policy-generator-security-fix-checks
+  namespace: policy-generator-security-fix-checks
+spec:
+  componentKinds:
+    - group: apps.open-cluster-management.io
+      kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - policy-generator-security-fix-checks
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  annotations:
+    apps.open-cluster-management.io/reconcile-rate: medium
+  name: policy-generator-security-fix-checks
+  namespace: policy-generator-security-fix-checks
+spec:
+  type: Git
+  pathname: https://github.com/giovannisciortino/policy-generator-security-fix-checks.git
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  annotations:
+    apps.open-cluster-management.io/git-branch: main
+    apps.open-cluster-management.io/git-path: kustomize
+    apps.open-cluster-management.io/reconcile-option: merge
+  labels:
+    app: policy-generator-security-fix-checks
+  name: policy-generator-security-fix-checks-subscription
+  namespace: policy-generator-security-fix-checks
+spec:
+  allow:
+    - apiVersion: policy.open-cluster-management.io/v1
+      kinds:
+        - "*"
+    - apiVersion: apps.open-cluster-management.io/v1
+      kinds:
+        - PlacementRule
+  channel: policy-generator-security-fix-checks/policy-generator-security-fix-checks
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: policy-generator-security-fix-checks-placement
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  labels:
+    app: policy-generator-security-fix-checks
+  name: policy-generator-security-fix-checks-placement
+  namespace: policy-generator-security-fix-checks
+spec:
+  clusterSelector:
+    matchExpressions:
+      - key: local-cluster
+        operator: In
+        values:
+          - "true"

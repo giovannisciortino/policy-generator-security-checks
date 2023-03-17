@@ -1,0 +1,12 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: policy-generator-security-fix-checks
+policyDefaults:
+  namespace: policy-generator-security-fix-checks
+  remediationAction: inform
+  severity: medium
+policies:
+  - name: policy-generator-security-fix-checks-manifests
+    manifests:
+      - path: security-fix-checks-manifests
