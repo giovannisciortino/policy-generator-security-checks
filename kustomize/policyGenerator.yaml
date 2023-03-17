@@ -7,6 +7,6 @@ policyDefaults:
   remediationAction: inform
   severity: medium
 policies:
-  - name: policy-generator-blog-app
+  - name: security-fix-checks
     manifests:
-      - path: security-fix-check-manifests
+      - path: security-fix-checks-manifests

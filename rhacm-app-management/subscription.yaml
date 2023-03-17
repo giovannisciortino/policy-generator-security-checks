@@ -40,7 +40,7 @@ metadata:
     apps.open-cluster-management.io/reconcile-option: merge
   labels:
     app: policy-generator-security-fix-checks
-  name: policy-generator-security-fix-checks-subscription
+  name: pol-gen-security-fix-checks-subscription
   namespace: policy-generator-security-fix-checks
 spec:
   allow:
