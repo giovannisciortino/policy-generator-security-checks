@@ -3,10 +3,10 @@ kind: PolicyGenerator
 metadata:
   name: policy-generator-security-fix-checks
 policyDefaults:
-  namespace: policy-generator-security-fix-checks
-  remediationAction: inform
-#  severity: medium
+  namespace: policy-generator-blog
+  remediationAction: enforce
+  severity: medium
 policies:
-  - name: policy-generator-security-fix-checks-manifests
+  - name: policy-generator-blog-app
     manifests:
-      - path: ./security-fix-checks-manifests
+      - path: security-fix-check-manifests
