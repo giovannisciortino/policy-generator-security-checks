@@ -13,5 +13,5 @@ policies:
     placement:
       clusterSelectors:
         vendor: OpenShift
-        name: notexists
+        name: local-cluster
     disabled: false
