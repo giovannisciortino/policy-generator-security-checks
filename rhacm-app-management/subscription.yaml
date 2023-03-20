@@ -30,6 +30,8 @@ metadata:
 spec:
   type: Git
   pathname: https://github.com/giovannisciortino/policy-generator-security-fix-checks.git
+  secretRef:
+    name: bitbucket-credentials  
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
