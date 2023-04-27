@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: test-namespace-security-fix
+  name: test-namespace-security-fix-2
